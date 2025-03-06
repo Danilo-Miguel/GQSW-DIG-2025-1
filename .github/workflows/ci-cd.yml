@@ -42,7 +42,7 @@ jobs:
     needs: ci  # O deploy só acontece se o CI passar com sucesso
 
     steps:
-      - name: 🛎️ Checkout do código
+      - name: 🛎️ Checkout do código # nome da etapa
         uses: actions/checkout@v3  # Obtém o código do repositório
 
       - name: 🐍 Configurar Python
