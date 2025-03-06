@@ -30,7 +30,8 @@ jobs:
       - name: 📦 Criar e ativar ambiente virtual e instalar dependências
         working-directory: ./login-app  # Define o diretório onde o requirements.txt está
         run: |
-          python -m venv venv  # Cria um ambiente virtual
+          python -m venv venv  # Cria um ambiente virtual dentro de login-app
+          ls venv  # Verifica a estrutura do diretório para garantir que o ambiente virtual foi criado corretamente
           source venv/bin/activate  # Ativa o ambiente virtual
           pip install --upgrade pip  # Atualiza o pip para a versão mais recente
           pip install -r requirements.txt  # Instala as dependências
@@ -65,7 +66,8 @@ jobs:
 
       - name: 📦 Criar e ativar ambiente virtual e instalar dependências
         run: |
-          python -m venv venv  # Cria o ambiente virtual
+          python -m venv venv  # Cria o ambiente virtual dentro de login-app
+          ls venv  # Verifica a estrutura do diretório para garantir que o ambiente virtual foi criado corretamente
           source venv/bin/activate  # Ativa o ambiente virtual
           pip install --upgrade pip  # Atualiza o pip
           pip install -r requirements.txt  # Instala as dependências
