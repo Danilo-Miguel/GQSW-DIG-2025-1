@@ -3,9 +3,11 @@ name: CI/CD Pipeline  # Nome do workflow
 on:
   push:
     branches:
+      - main           
       - class_preparation  # Executa o pipeline quando há push na branch main
   pull_request:
     branches:
+      - main           
       - class_preparation  # Executa apenas o CI em pull requests para a main
 
 jobs:
