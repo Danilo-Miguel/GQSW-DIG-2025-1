@@ -31,21 +31,17 @@ jobs:
         working-directory: ./login-app  # Define o diretório onde o requirements.txt está
         run: |
           python -m venv venv  # Cria um ambiente virtual dentro de login-app
-          ls venv  # Verifica a estrutura do diretório para garantir que o ambiente virtual foi criado corretamente
-          source venv/bin/activate  # Ativa o ambiente virtual
-          pip install --upgrade pip  # Atualiza o pip para a versão mais recente
-          pip install -r requirements.txt  # Instala as dependências
+          python -m pip install --upgrade pip  # Atualiza o pip
+          venv/bin/pip install -r requirements.txt  # Instala as dependências diretamente
 
       - name: 🗃️ Configurar Banco de Dados
         run: |
-          source venv/bin/activate
-          python -c "from app import db, create_app; app = create_app(); with app.app_context(): db.create_all()"  
+          venv/bin/python -c "from app import db, create_app; app = create_app(); with app.app_context(): db.create_all()"  
           # Inicializa o banco de dados (se necessário)
 
       - name: 🧪 Executar Testes
         run: |
-          source venv/bin/activate
-          pytest  # Executa os testes automatizados
+          venv/bin/pytest  # Executa os testes automatizados
 
   # ==========================
   # CD (Continuous Deployment)
@@ -62,15 +58,13 @@ jobs:
       - name: 🐍 Configurar Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.12.4'
 
       - name: 📦 Criar e ativar ambiente virtual e instalar dependências
         run: |
           python -m venv venv  # Cria o ambiente virtual dentro de login-app
-          ls venv  # Verifica a estrutura do diretório para garantir que o ambiente virtual foi criado corretamente
-          source venv/bin/activate  # Ativa o ambiente virtual
-          pip install --upgrade pip  # Atualiza o pip
-          pip install -r requirements.txt  # Instala as dependências
+          python -m pip install --upgrade pip  # Atualiza o pip
+          venv/bin/pip install -r requirements.txt  # Instala as dependências diretamente
 
       - name: 🚀 Deploy (Personalizar)
         run: |
