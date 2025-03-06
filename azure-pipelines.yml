@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'  # Usando uma imagem Ubuntu para rodar os testes
 
 variables:
-  pythonVersion: '3.8'  # Defina a versão do Python que está usando no projeto
+  pythonVersion: '3.12.4'  # Definir a versão do Python que está usando no projeto
 
 steps:
 - task: UsePythonVersion@0
@@ -27,5 +27,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/test-*.xml'   # Se você estiver usando pytest para testes
+    testResultsFiles: '**/test-*.xml' 
     mergeTestResults: true
