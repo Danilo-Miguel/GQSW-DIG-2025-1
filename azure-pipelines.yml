@@ -1,0 +1,31 @@
+trigger:
+  branches:
+    include:
+      - class_preparation   # Ou a branch principal do seu projeto
+
+pool:
+  vmImage: 'ubuntu-latest'  # Usando uma imagem Ubuntu para rodar os testes
+
+variables:
+  pythonVersion: '3.12.4'  # Definir a versão do Python que está usando no projeto
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: $(pythonVersion)
+    addToPath: true
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Instalar dependências'
+
+- script: |
+    pytest  # ou o comando para rodar seus testes
+  displayName: 'Rodar os testes'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/test-*.xml' 
+    mergeTestResults: true
