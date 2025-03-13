@@ -1,5 +1,5 @@
 from app import create_app, db
-
+# comentários
 app = create_app()
 
 # Criação do banco de dados (tabelas)
