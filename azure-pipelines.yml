@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'  # Usando uma imagem Ubuntu para rodar os testes
 
 variables:
-  pythonVersion: '3.12.4'  # Definir a versão do Python que está usando no projeto
+  pythonVersion: '3.12.4'  # Definir a versão do Python
 
 steps:
 - task: UsePythonVersion@0
@@ -18,10 +18,12 @@ steps:
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
+  workingDirectory: ./login-app  # 📌 Adicionado para apontar para a pasta correta
   displayName: 'Instalar dependências'
 
 - script: |
     pytest  # ou o comando para rodar seus testes
+  workingDirectory: ./login-app  # 📌 Adicionado para rodar os testes no diretório correto
   displayName: 'Rodar os testes'
 
 - task: PublishTestResults@2
