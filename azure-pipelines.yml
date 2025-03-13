@@ -1,33 +1,24 @@
 trigger:
   branches:
     include:
-      - class_preparation   # Ou a branch principal do seu projeto
+      - class_preparation   # O pipeline será acionado quando houver mudanças nessa branch
 
 pool:
-  vmImage: 'ubuntu-latest'  # Usando uma imagem Ubuntu para rodar os testes
+  vmImage: 'ubuntu-latest'  # Define o sistema operacional da máquina virtual usada no pipeline
 
 variables:
-  pythonVersion: '3.12.4'  # Definir a versão do Python
+  pythonVersion: '3.12.4'  # Define a versão do Python a ser usada
 
 steps:
+# Configura a versão do Python no ambiente
 - task: UsePythonVersion@0
   inputs:
     versionSpec: $(pythonVersion)
     addToPath: true
 
+# Instala as dependências do projeto
 - script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  workingDirectory: ./login-app  # 📌 Adicionado para apontar para a pasta correta
+    python -m pip install --upgrade pip  # Atualiza o pip para a versão mais recente
+    pip install -r requirements.txt  # Instala os pacotes listados no requirements.txt
+  workingDirectory: ./login-app  # Define o diretório correto onde está o arquivo requirements.txt
   displayName: 'Instalar dependências'
-
-- script: |
-    pytest  # ou o comando para rodar seus testes
-  workingDirectory: ./login-app  # 📌 Adicionado para rodar os testes no diretório correto
-  displayName: 'Rodar os testes'
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/test-*.xml' 
-    mergeTestResults: true
