@@ -27,7 +27,7 @@ jobs:
       - name: 🐍 Configurar Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12.14'  # Define a versão do Python
+          python-version: '3.12.4'  # Define a versão do Python
 
       - name: 📦 Instalar dependências
         working-directory: ./login-app  # Define o diretório onde o requirements.txt está
