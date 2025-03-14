@@ -1,0 +1,39 @@
+trigger:
+  branches:
+    include:
+      - class_preparation   # O pipeline será acionado quando houver mudanças nessa branch
+      - aula_06-03_demo
+      - main
+
+
+pool:
+  vmImage: 'ubuntu-latest'  # Usa uma VM com Ubuntu para executar o pipeline
+
+variables:
+  pythonVersion: '3.12.4'  # Define a versão do Python
+
+steps:
+# Configura a versão do Python
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: $(pythonVersion)
+    addToPath: true
+
+# Instala as dependências do projeto
+- script: |
+    python -m pip install --upgrade pip  # Atualiza o gerenciador de pacotes pip
+    pip install -r requirements.txt  # Instala as dependências listadas no arquivo
+  workingDirectory: ./login-app  # Define o diretório correto onde está o arquivo requirements.txt
+  displayName: 'Instalar dependências'
+
+# Empacotar os arquivos para facilitar o deploy manual
+- script: |
+    tar -czvf login-app.tar.gz ./login-app  # Cria um arquivo compactado com o código
+  displayName: 'Compactar aplicação para deploy manual'
+
+# Publicar o pacote como artefato no Azure DevOps (opcional)
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'login-app.tar.gz'
+    artifactName: 'login-app-package'
+  displayName: 'Publicar pacote para deploy manual'
