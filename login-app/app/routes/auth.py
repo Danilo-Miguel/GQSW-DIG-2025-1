@@ -39,4 +39,5 @@ def login():
 @auth_bp.route("/logout", methods=["POST"])
 @jwt_required()  # Exige que o usuário esteja autenticado (token válido)
 def logout():
-    return jsonify({"message": "Logout successful"}), 200  # Retorna mensagem de sucesso
+    current_user_id = get_jwt_identity()  # Isso recupera o 'sub' (subject) do token, que deve ser o user.id
+    return jsonify({"message": f"Logout successful for {current_user_id}"}), 200  # Retorna mensagem de sucesso
