@@ -5,12 +5,10 @@ on:
     branches:
       - main           
       - class_preparation  # Executa o pipeline quando há push na branch main
-      - aula_06-03_demo
   pull_request:
     branches:
       - main           
       - class_preparation  # Executa apenas o CI em pull requests para a main
-      - aula_06-03_demo
 
 jobs:
   # ==========================
@@ -27,7 +25,7 @@ jobs:
       - name: 🐍 Configurar Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12.4'  # Define a versão do Python
+          python-version: '3.10'  # Define a versão do Python
 
       - name: 📦 Instalar dependências
         working-directory: ./login-app  # Define o diretório onde o requirements.txt está

@@ -2,9 +2,6 @@ trigger:
   branches:
     include:
       - class_preparation   # O pipeline será acionado quando houver mudanças nessa branch
-      - aula_06-03_demo
-      - main
-
 
 pool:
   vmImage: 'ubuntu-latest'  # Usa uma VM com Ubuntu para executar o pipeline
