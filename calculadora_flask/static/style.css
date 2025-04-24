@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 40px;
+    text-align: center;
+}
+form {
+    background-color: white;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input, select, button {
+    margin: 10px;
+    padding: 8px;
+}
+.resultado {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: green;
+}
