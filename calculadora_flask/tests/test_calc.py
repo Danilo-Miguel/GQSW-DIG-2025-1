@@ -38,5 +38,21 @@ def test_tipo_retorno_dividir():
     resultado = dividir(6, 0)
     assert isinstance(resultado, str)  # Verifica se o resultado é uma string quando a divisão é inválida(Divisão por zero retorno string)
  
+# Testes das operações com números de ponto flutuante (floats)
+def test_somar_floats():
+    assert somar(2.5, 3.5) == 6.0
+    assert somar(-1.2, 1.2) == 0.0
+
+def test_subtrair_floats():
+    assert subtrair(5.5, 2.2) == 3.3
+    assert subtrair(-1.0, -1.0) == 0.0
+
+def test_multiplicar_floats():
+    assert multiplicar(2.5, 4.0) == 10.0
+    assert multiplicar(-1.5, 2.0) == -3.0
+
+def test_dividir_floats():
+    assert dividir(7.5, 2.5) == 3.0
+    assert dividir(0.0, 5.0) == 0.0
 
      
