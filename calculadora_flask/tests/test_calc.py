@@ -32,11 +32,11 @@ def test_dividir():
     assert dividir(0, 0) == 'undefined' 
 
 def test_tipo_retorno_dividir():
-    ressultado = dividir(6, 3)
-    assert isinstance(ressultado, int, float)  # Verifica se o resultado é um número
+    resultado = dividir(6, 3)
+    assert isinstance(resultado, (int, float))  # Verifica se o resultado é um número
     
-    
-    assert isinstance(dividir(5, 0), str)  # Verifica se o resultado é uma string quando a divisão é inválida(Divisão por zero retorno string)
+    resultado = dividir(6, 0)
+    assert isinstance(resultado, str)  # Verifica se o resultado é uma string quando a divisão é inválida(Divisão por zero retorno string)
  
 
      
