@@ -55,4 +55,4 @@ def test_dividir_parametrize(a, b, esperado):
     (0, 0),
 ])
 def test_dividir_por_zero_parametrize(a, b):
-    assert dividir(a, b) == 'Erro: divisão por zero'
+    assert dividir(a, b) == 'Erro: divisao por zero'

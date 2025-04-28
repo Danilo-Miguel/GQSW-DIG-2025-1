@@ -6,7 +6,7 @@ from calc import somar, subtrair, multiplicar, dividir
 app = Flask(__name__)
 
 # Rota principal (formulário da calculadora)
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/calculadora', methods=['GET', 'POST'])
 def index():
     resultado = None
 
