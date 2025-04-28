@@ -1,19 +1,25 @@
 # calc.py
 
-# Função para somar dois números
+# This is a simple calculator program that performs basic arithmetic operations.
+# It includes functions for addition, subtraction, multiplication, and division.
+# Each function takes two arguments and returns the result of the operation.
+
+# This function takes two numbers and returns their sum.
 def somar(a, b):
     return a + b
 
-# Função para subtrair dois números
+# This function takes two numbers and returns their difference.
 def subtrair(a, b):
     return a - b
 
-# Função para multiplicar dois números
+# This function takes two numbers and returns their product.
 def multiplicar(a, b):
     return a * b
 
-# Função para dividir dois números
+# This function takes two numbers and returns their quotient.
+# If the second number is zero, it returns 'undefined' to avoid division by zero.
 def dividir(a, b):
     if b == 0:
-        return "Erro: divisão por zero"
-    return a / b
+        return 'undefined'
+    else:
+        return a / b

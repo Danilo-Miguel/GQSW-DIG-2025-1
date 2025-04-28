@@ -2,28 +2,30 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Simples</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>Calculadora Simples</h1>
-    <form method="post">
-        <input type="number" name="a" step="any" placeholder="Número A" required>
-        <select name="operacao" required>
-            <option value="somar">+</option>
-            <option value="subtrair">-</option>
-            <option value="multiplicar">*</option>
-            <option value="dividir">/</option>
-        </select>
-        <input type="number" name="b" step="any" placeholder="Número B" required>
-        <br>
-        <button type="submit">Calcular</button>
-    </form>
+    </head>
 
-    {% if resultado is not none %}
-        <div class="resultado">
-            Resultado: {{ resultado }}
-        </div>
-    {% endif %}
-</body>
+    <body>
+            <h1>Calculadora Simples</h1>
+            <form method="post">
+                <input type="number" name="a"  step="any" placeholder="Número A" required>
+                <input type="number" name="b"  step="any" placeholder="Número B" required>
+                <select name="operacao" required>
+                    <option value="somar">+</option>
+                    <option value="subtrair">-</option>
+                    <option value="multiplicar">*</option>
+                    <option value="dividir">/</option>
+                </select>
+                <button type="submit">Calcular</button>
+            </form>
+
+            {% if resultado is not none %}
+                <div class ="resultado">
+                Resultado: {{ resultado }}</h2>
+            {% endif %}
+    </body>
+
+
 </html>
