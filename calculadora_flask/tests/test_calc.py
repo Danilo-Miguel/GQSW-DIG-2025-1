@@ -1,41 +1,42 @@
-# test_calc.py
-
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Importando as funções de cálculo do módulo 'calc'
+import pytest
 from calc import somar, subtrair, multiplicar, dividir
 
-# Função de teste para a operação de soma
+# Test cases for the calculator functions
 def test_somar():
-    # Verifica se a soma de 2 e 3 é igual a 5
     assert somar(2, 3) == 5
-    # Verifica se a soma de -1 e 1 é igual a 0
     assert somar(-1, 1) == 0
+    assert somar(0, 0) == 0
+    assert somar(-1, -1) == -2
 
-# Função de teste para a operação de subtração
 def test_subtrair():
-    # Verifica se a subtração de 5 e 3 é igual a 2
     assert subtrair(5, 3) == 2
-    # Verifica se a subtração de 0 e 4 é igual a -4
-    assert subtrair(0, 4) == -4
+    assert subtrair(0, 0) == 0
+    assert subtrair(-1, -1) == 0
+    assert subtrair(-1, 1) == -2
 
-# Função de teste para a operação de multiplicação
 def test_multiplicar():
-    # Verifica se a multiplicação de 2 e 3 é igual a 6
     assert multiplicar(2, 3) == 6
-    # Verifica se a multiplicação de 0 e 10 é igual a 0
-    assert multiplicar(0, 10) == 0
+    assert multiplicar(-1, 1) == -1
+    assert multiplicar(0, 5) == 0
+    assert multiplicar(-1, -1) == 1
 
-# Função de teste para a operação de divisão
 def test_dividir():
-    # Verifica se a divisão de 10 por 2 é igual a 5
-    assert dividir(10, 2) == 5
-    # Verifica se a divisão de 5 por 2 é igual a 2.5
-    assert dividir(5, 2) == 2.5
+    assert dividir(6, 3) == 2
+    assert dividir(0, 5) == 0
+    assert dividir(-6, -3) == 2
+    assert dividir(5, 0) == 'undefined'
+    assert dividir(0, 0) == 'undefined' 
 
-# Função de teste para verificar a divisão por zero
-def test_dividir_por_zero():
-    # Verifica se a divisão por zero retorna a mensagem de erro correta
-    assert dividir(10, 0) == "Erro: divisão por zero"
+def test_tipo_retorno_dividir():
+    ressultado = dividir(6, 3)
+    assert isinstance(ressultado, int, float)  # Verifica se o resultado é um número
+    
+    
+    assert isinstance(dividir(5, 0), str)  # Verifica se o resultado é uma string quando a divisão é inválida(Divisão por zero retorno string)
+ 
+
+     
