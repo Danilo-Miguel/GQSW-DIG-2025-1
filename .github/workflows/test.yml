@@ -25,5 +25,6 @@ jobs:
         pip install pylint
 
     - name: Rodar Pylint
+      working-directory: ./calculadora_flask 
       run: |
         pylint calc.py
