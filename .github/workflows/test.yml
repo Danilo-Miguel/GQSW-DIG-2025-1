@@ -3,7 +3,7 @@ name: Análise de Qualidade com Pylint
 
 on:
   push:
-    branches: [main]
+    branches: [class_preparation_24/04]
   pull_request:
 
 jobs:
