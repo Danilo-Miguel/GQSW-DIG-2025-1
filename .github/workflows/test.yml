@@ -1,13 +1,13 @@
 # .github/workflows/test.yml
-name: Análise de Complexidade com Radon
+name: Análise de Qualidade com Pylint
 
 on:
   push:
-    branches: [class_preparation_24/04]
+    branches: [main]
   pull_request:
 
 jobs:
-  radon-complexity:
+  pylint-quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +19,11 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Instalar Radon
+    - name: Instalar Pylint
       working-directory: ./calculadora_flask 
       run: |
-        pip install radon
+        pip install pylint
 
-    - name: Verificar complexidade ciclomática
+    - name: Rodar Pylint
       run: |
-        radon cc . -s -a
+        pylint calc.py
