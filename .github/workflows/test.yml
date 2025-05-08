@@ -1,13 +1,13 @@
 # .github/workflows/test.yml
-name: Testes Unitários Simples
+name: Testes com Cobertura Total
 
 on:
   push:
-    branches: [class_preparation_24/04]
+    branches: [main]
   pull_request:
 
 jobs:
-  unit-tests:
+  unit-tests-cov:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,12 +20,11 @@ jobs:
         python-version: '3.10'
 
     - name: Instalar dependências
-      working-directory: ./calculadora_flask
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest
+        pip install pytest pytest-cov
 
-    - name: Executar testes com pytest
+    - name: Executar testes com cobertura
       run: |
-        pytest
+        pytest --cov=.
