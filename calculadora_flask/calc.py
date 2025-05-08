@@ -20,6 +20,6 @@ def multiplicar(a, b):
 # If the second number is zero, it returns 'undefined' to avoid division by zero.
 def dividir(a, b):
     if b == 0:
-        return 'Erro: divisao por zero'
+        return "Undefined" #return 'Erro: divisao por zero' # This line is commented out to avoid division by zero error.
     else:
-        return a / b
+        return a / b 
