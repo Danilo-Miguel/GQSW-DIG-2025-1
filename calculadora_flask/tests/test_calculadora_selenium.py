@@ -1,13 +1,21 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options  # Adicionado
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from webdriver_manager.chrome import ChromeDriverManager  # Adicionado
 import time
+import sys  # Adicionado para controle de erro
 
-# Caminho para o chromedriver
-caminho_driver = "D:/Documentos/chromedriver-win64/chromedriver-win64/chromedriver.exe"
-service = Service(caminho_driver)
-driver = webdriver.Chrome(service=service)
+# Configurações para rodar no GitHub Actions (modo headless)
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+# Caminho para o chromedriver adaptado para qualquer ambiente (GitHub Actions incluso)
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=options)
 
 # Abre a aplicação
 driver.get("http://127.0.0.1:5000/calculadora")
@@ -48,6 +56,8 @@ casos_de_teste = [
 ]
 
 # Executa cada teste
+falhou = False  # Controle de falhas para GitHub Actions
+
 for a, b, operacao, esperado in casos_de_teste:
     print(f"\n🔢 Testando: {a} {operacao} {b} (esperado: {esperado})")
 
@@ -81,7 +91,12 @@ for a, b, operacao, esperado in casos_de_teste:
         print(f"✅ Resultado correto: {resultado}")
     else:
         print(f"❌ Resultado incorreto: {resultado} (esperado: {esperado})")
+        falhou = True
 
 # Espera para visualização final e fecha navegador
 time.sleep(4)
 driver.quit()
+
+# Finaliza com erro se algum teste falhou
+if falhou:
+    sys.exit(1)
