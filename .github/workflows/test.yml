@@ -5,9 +5,9 @@ name: Unity test
 
 on: 
     push:
-        branches: [aula-15-05] 
+        branches: [aula-29-05] 
     pull_request:
-        branches: [aula-15-05]    
+        branches: [aula-29-05]    
 
 jobs:
     unit_tests:
