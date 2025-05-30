@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import Select
 import time
 
 #caminho do chromedriver
-CHROMEDRIVER_PATH ="D:\Documentos\chromedriver-win64\chromedriver-win64\chromedriver.exe"
+CHROMEDRIVER_PATH =r"D:\Documentos\chromedriver-win64\chromedriver-win64\chromedriver.exe"
 
 # Configuração do serviço do ChromeDriver
 service = Service(CHROMEDRIVER_PATH)
